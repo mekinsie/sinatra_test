@@ -1,3 +1,4 @@
+
 class Album
   attr_reader :id, :name
   attr_accessor :name
@@ -38,3 +39,4 @@ class Album
   def delete()
     @@albums.delete(self.id)
   end
+end
