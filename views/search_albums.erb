@@ -1,0 +1,25 @@
+<h1>Search for the Album you would like!</h1>
+
+<form action="/albums/search" method="post">
+  <div class="form-group">
+    <label for="search_term">Album name</label>
+    <input id="search_term" name="search_term" class="form-control" type="text">
+  </div>
+  <button type="submit" class="btn">Go!</button>
+</form>
+
+
+
+<% if @albums.empty? %>
+  <p>There are currently no records to display.</p>
+<% elsif @albums != Album.all %>
+  <ul>
+    <% @albums.each do |album| %>
+      <li><a href="/albums/<%= album.id %>"><%= album.name %></a></li>
+    <% end %>
+  </ul>
+<% end %>
+
+
+<p><a href="/albums">Return to album list</a></p>
+

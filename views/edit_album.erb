@@ -1,11 +1,20 @@
-<h1>Update <%= @album.name() %></h1>
+<h1>Update <%= @album.name %></h1>
 
 <form action="/albums/<%= @album.id() %>" method="post">
   <input name="_method" type="hidden" value="patch">
 
   <label for="name">Rename album</label>
-  <input id="name" name="name" type="text">
-
+  <input id="name" name="name" value= "<%= @album.name %>" type="text">
+  <br>
+  <label for="artist">Change Artist</label>
+  <input id="artist" name="artist" value= "<%= @album.artist %>" type="text">
+  <br>
+  <label for="genre">Change Genre</label>
+  <input id="genre" name="genre" value= "<%= @album.genre %>" type="text">
+  <br>
+  <label for="year">Change Year</label>
+  <input id="year" name="year" value= "<%= @album.year %>" type="text">
+  <br>
   <button type="submit">Update</button>
 </form>
 
