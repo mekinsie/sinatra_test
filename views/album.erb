@@ -14,7 +14,7 @@
     </ul>
   <% else %>
     <p>There are no songs listed for this album yet.</p>
-  <% end %>
+  <% end %><br>
 
 <h4>Add a song:</h4>
 
@@ -24,7 +24,7 @@
     <input id="song_name" name="song_name" class="form-control" type="text">
   </div>
   <button type="submit" class="btn">Add song</button>
-</form>
+</form><br>
 
 <p><a href="/albums/<%= @album.id %>/edit">Edit album</a></p>
 <a href="/albums">Return to album list</a>
