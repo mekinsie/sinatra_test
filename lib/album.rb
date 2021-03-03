@@ -33,7 +33,7 @@ class Album
     @@albums[id]
   end
 
-  def update(name, artist, year, genre)
+  def update(name, artist, year, genre, id)
     self.name = name
     self.artist = artist
     self.year = year
