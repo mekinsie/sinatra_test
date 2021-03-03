@@ -38,7 +38,6 @@ post('/albums') do
   album = Album.new(name, artist, year, genre, nil)
   album.save()
   @albums = Album.album_sort
-  @albums = Album.all
   erb(:albums)
 end
 

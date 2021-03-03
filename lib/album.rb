@@ -54,6 +54,6 @@ class Album
   end
 
   def self.album_sort()
-    @@albums.values.sort_by { |album| [self.name] }
+    @@albums.values.sort_by { |album| [album.name] }
   end
 end
