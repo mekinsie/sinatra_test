@@ -49,7 +49,7 @@ class Album
     @@albums.values.select { |album| album.name == search_term }
   end
 
-  def self.album_sort()
-    @@albums.values.sort()
+  def self.album_sort(name)
+    @@albums.values.sort_by { |album| [self.name] }
   end
 end

@@ -36,7 +36,8 @@ post('/albums') do
   genre = params[:album_genre]
   album = Album.new(name, artist, year, genre, nil)
   album.save()
-  @albums = Album.album_sort.all
+  @albums = Album.album_sort(params[:album_name])
+  @albums = Album.all
   erb(:albums)
 end
 
