@@ -83,15 +83,15 @@ describe '#Album' do
 #     end
 #   end
 
-#   describe('#songs') do
-#     it("returns an album's songs") do
-#       album = Album.new("Giant Steps", nil, nil, nil, nil)
-#       album.save()
-#       song = Song.new("Naima", album.id, nil, nil, nil)
-#       song.save()
-#       song2 = Song.new("Cousin Mary", album.id, nil, nil, nil)
-#       song2.save()
-#       expect(album.songs).to(eq([song, song2]))
-#     end
-#   end
+  describe('#songs') do
+    it("returns an album's songs") do
+      album = Album.new({name: "Giant Steps"})
+      album.save()
+      song = Song.new({name: "Naima", album_id: album.id})
+      song.save()
+      song2 = Song.new({name: "Cousin Mary", album_id: album.id})
+      song2.save()
+      expect(album.songs).to(eq([song, song2]))
+    end
+  end
 end

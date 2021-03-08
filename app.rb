@@ -38,9 +38,9 @@ post('/albums') do
   artist = params[:album_artist]
   year = params[:album_year]
   genre = params[:album_genre]
-  album = Album.new(name, artist, year, genre, nil)
+  album = Album.new({name: name, artist: artist, year: year, genre: genre})
   album.save()
-  @albums = Album.album_sort
+  @albums = Album.all
   erb(:albums)
 end
 
@@ -77,7 +77,7 @@ end
 # Post a new song. After the song is added, Sinatra will route to the view for the album the song belongs to.
 post('/albums/:id/songs') do
   @album = Album.find(params[:id].to_i())
-  song = Song.new(params[:song_name], @album.id, nil, nil, nil)
+  song = Song.new({name: params[:song_name], album_id: @album.id})
   song.save()
   erb(:album)
 end
@@ -86,7 +86,7 @@ end
 patch('/albums/:id/songs/:song_id') do
   @album = Album.find(params[:id].to_i())
   song = Song.find(params[:song_id].to_i())
-  song.update(params[:name], @album.id , params[:writer], params[:lyrics])
+  song.update(params[:name], @album.id)
   erb(:album)
 end
 

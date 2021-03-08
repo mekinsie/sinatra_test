@@ -50,21 +50,22 @@ class Song
     DB.exec("DELETE FROM songs WHERE id = #{id};")
   end
 
-  # def self.clear
-  #   @@songs = {}
-  # end
+  def self.clear
+    DB.exec("DELETE FROM songs *;")
+  end
 
-  # def self.find_by_album(alb_id)
-  #   songs = []
-  #   @@songs.values.each do |song|
-  #     if song.album_id == alb_id
-  #       songs.push(song)
-  #     end
-  #   end
-  #   songs
-  # end
+  def self.find_by_album(alb_id)
+    songs = []
+    returned_songs = DB.exec("SELECT * FROM songs WHERE album_id = #{alb_id};")
+    returned_songs.each() do |song|
+        name = song.fetch("name")
+        id = song.fetch("id").to_i
+        songs << (Song.new({:name => name, :album_id => alb_id,:id => id}))
+    end
+    songs
+  end
 
-  # def album
-  #   Album.find(self.album_id)
-  # end
+  def album
+    Album.find(@album_id)
+  end
 end
