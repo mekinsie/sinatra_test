@@ -21,6 +21,7 @@ GEM
       ruby2_keywords (~> 0.0.1)
     nokogiri (1.11.1-x64-mingw32)
       racc (~> 1.4)
+    pg (1.2.3-x64-mingw32)
     pry (0.14.0)
       coderay (~> 1.1)
       method_source (~> 1.0)
@@ -68,6 +69,7 @@ PLATFORMS
 
 DEPENDENCIES
   capybara
+  pg
   pry
   reline
   rspec
