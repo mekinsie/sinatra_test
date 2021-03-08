@@ -72,6 +72,18 @@ describe '#Album' do
       expect(Album.all).to(eq([album2]))
     end
   end
+  
+  describe('#delete') do
+    it("deletes all songs belonging to a deleted album") do
+      album = Album.new({name: "A Love Supreme"})
+      album.save()
+      song = Song.new({name: "Naima", album_id: album.id})
+      song.save()
+      album.delete()
+      expect(Song.find(song.id)).to(eq(nil))
+      # expect(Song.all).to(eq([]))
+    end
+  end
 
 #   describe('.search') do 
 #     it('searches through the albums and returns name matches') do
