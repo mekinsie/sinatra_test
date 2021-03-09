@@ -57,9 +57,9 @@ end
 
 patch('/albums/:id') do
   @album = Album.find(params[:id].to_i())
-  @album.update(params[:name], params[:artist], params[:year], params[:genre])
-  @albums = Album.all
-  erb(:albums)
+  @album.update({name: params[:name], artist: params[:artist_name], year: params[:year], genre: params[:genre]})
+  @artists = @album.artists
+  erb(:album)
 end
 
 delete('/albums/:id') do
@@ -114,7 +114,7 @@ end
 #Update a single artist
 patch('/artists/:id') do
   @artist = Artist.find(params[:id].to_i())
-  @artist.update(params[:artist_name])
+  @artist.update({name: params[:artist_name]})
   erb(:artist)
 end
 
@@ -137,7 +137,10 @@ end
 
 #Delete an artist from the list
 delete('/artists/:id') do
-  erb(:artist)
+  artist = Artist.find(params[:id].to_i)
+  artist.delete
+  @artists = Artist.all
+  erb(:artists)
 end
 
 # get('/albums') do

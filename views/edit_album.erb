@@ -7,7 +7,7 @@
   <input id="name" name="name" value= "<%= @album.name %>" type="text">
   <br>
   <label for="artist">Change Artist</label>
-  <input id="artist" name="artist" value= "<%= @album.artist %>" type="text">
+  <input id="artist_name" name="artist_name" value= "<%= @artist.name %>" type="text">
   <br>
   <label for="genre">Change Genre</label>
   <input id="genre" name="genre" value= "<%= @album.genre %>" type="text">
@@ -22,6 +22,5 @@
 
 <form action="/albums/<%= @album.id() %>" method="post">
   <input name="_method" type="hidden" value="delete">
-
   <button type="submit">Delete album</button>
 </form>

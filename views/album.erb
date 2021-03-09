@@ -1,5 +1,19 @@
 <h4>Album Name: <%= @album.name %></h4>
-<h4>Artist: <%= @album.artist %></h4>
+<h4>Artist: 
+<ul>
+<% if @artists %>
+  <ul>
+    <% @artists.each do |artist| %>
+    <li><a href="/artists/<%= artist.id %>"><%= artist.name %></a></li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>There are no artists listed for this album.</p>
+<% end %></h4>
+
+
+
+
 <h4>Album Year: <%= @album.year %></h4>
 <h4>Album Genre: <%= @album.genre %></h4><br>
 
