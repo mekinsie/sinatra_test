@@ -3,6 +3,7 @@ require('sinatra/reloader')
 require('./lib/album')
 require('pry')
 require('./lib/song')
+require('./lib/artist')
 require('pg')
 also_reload('lib/**/*.rb')
 
@@ -106,7 +107,7 @@ end
 
 #Look at the detail page for a single artist
 get('/artists/:id') do
-  @artist = Artist.find(params[:id].to_i())
+  @artist = Artist.find((params[:id].to_i()))
   erb(:artist)
 end
 
@@ -114,6 +115,15 @@ end
 patch('/artists/:id') do
   @artist = Artist.find(params[:id].to_i())
   @artist.update(params[:artist_name])
+  erb(:artist)
+end
+
+post('/artists/:id') do
+  @artist = Artist.find(params[:id].to_i())
+  album = Album.new({name: (params[:album_name]), artist: @artist.name})
+  album.save()
+  @artist.update({album_name: album.name})
+  @albums = Album.all
   erb(:artist)
 end
 

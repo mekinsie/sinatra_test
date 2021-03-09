@@ -1,11 +1,11 @@
-<h4>Artist Name: <%= @artist.name %></h4>
+<h1><%= @artist.name %></h1>
 
-<h3>"Artist's Albums"</h3>
+<h3>Albums</h3>
 
-  <% if @artist.albums %>
+  <% if @artist.albums != []%>
     <ul>
       <% @artist.albums.each do |album| %>
-        <li><a href="/albums/<%= @album.id %> %>"><%= album.name %></a></li>
+        <li><a href="/albums/<%= album.id %>"><%= album.name %></a></li>
       <% end %>
     </ul>
   <% else %>
@@ -14,10 +14,9 @@
 
 <h4>Add an album:</h4>
 
-<form action="/albums/<%= @album.id %>" method="post">
-<input name="_method" type="hidden" value="patch">
+<form action="/artists/<%= @artist.id %>" method="post">
   <div class="form-group">
-    <label for="album_name">Song name</label>
+    <label for="album_name">Album name:</label>
     <input id="album_name" name="album_name" class="form-control" type="text">
   </div>
   <button type="submit" class="btn">Add album</button>
@@ -28,7 +27,7 @@
 <form action="/artists/<%= @artist.id %>" method="post">
   <input name="_method" type="hidden" value="patch">
   <div class="form-group">
-    <label for="artist_name">Artist name</label>
+    <label for="artist_name">Artist name:</label>
     <input id="artist_name" name="artist_name" class="form-control" type="text">
   </div>
   <button type="submit" class="btn">Edit artist</button>
