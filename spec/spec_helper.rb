@@ -3,6 +3,7 @@ require 'album'
 require 'song'
 require 'pry'
 require 'pg'
+require 'artist'
 
 DB = PG.connect({:dbname => 'record_store_test', :user=>'postgres', :password => 'Epidorkus@11'})
 RSpec.configure do |config|
