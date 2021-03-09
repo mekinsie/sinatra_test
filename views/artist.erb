@@ -15,6 +15,7 @@
 <h4>Add an album:</h4>
 
 <form action="/albums/<%= @album.id %>" method="post">
+<input name="_method" type="hidden" value="patch">
   <div class="form-group">
     <label for="album_name">Song name</label>
     <input id="album_name" name="album_name" class="form-control" type="text">
@@ -30,7 +31,7 @@
     <label for="artist_name">Artist name</label>
     <input id="artist_name" name="artist_name" class="form-control" type="text">
   </div>
-  <button type="submit" class="btn">Add album</button>
+  <button type="submit" class="btn">Edit artist</button>
 </form><br>
 
 <a href="/artists">Return to list of artists</a>

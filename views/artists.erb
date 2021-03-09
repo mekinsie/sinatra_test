@@ -12,6 +12,15 @@
   <p>There are currently no artists to display.</p>
 <% end %>
 
+<h4>Add new artist:</h4>
+<form action="/artists" method="post">
+  <div class="form-group">
+    <label for="artist_name">Artist name</label>
+    <input id="artist_name" name="artist_name" class="form-control" type="text">
+  </div>
+  <button type="submit" class="btn">Add album</button>
+</form><br>
+
 
 <a href="/albums">Back to main page.</a>
 

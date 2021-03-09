@@ -119,16 +119,16 @@ end
 
 #Add a new artist to the list of artists
 post('/artists') do
+  artist = Artist.new({name: params[:artist_name]})
+  artist.save()
+  @artists = Artist.all
   erb(:artists)
 end
-
-
 
 #Delete an artist from the list
 delete('/artists/:id') do
   erb(:artist)
 end
-
 
 # get('/albums') do
 # end
