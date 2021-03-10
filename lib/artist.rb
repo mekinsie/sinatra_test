@@ -72,4 +72,9 @@ class Artist
     DB.exec("DELETE FROM artists WHERE id = #{@id};")
     DB.exec("DELETE FROM albums_artists WHERE artist_id = #{@id};")
   end
+
+
+  def self.find_artist_by_name(artist_name)
+     DB.exec("SELECT * FROM artists WHERE lower(name)='#{artist_name.downcase}';").first
+  end
 end

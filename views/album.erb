@@ -1,7 +1,7 @@
 <h4>Album Name: <%= @album.name %></h4>
 <h4>Artist: 
 <ul>
-<% if @artists %>
+<% if @artists.any? %>
   <ul>
     <% @artists.each do |artist| %>
     <li><a href="/artists/<%= artist.id %>"><%= artist.name %></a></li>

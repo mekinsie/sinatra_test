@@ -22,7 +22,7 @@ class Album
   end
 
   def save
-    result = DB.exec("INSERT INTO albums (name) VALUES ('#{@name}') RETURNING id;")
+    result = DB.exec("INSERT INTO albums (name, year, genre) VALUES ('#{@name}', '#{@year}', '#{@genre}' ) RETURNING id;")
     @id = result.first().fetch("id").to_i
   end
 
@@ -56,24 +56,11 @@ class Album
       @genre = attributes.fetch(:genre)
       DB.exec("UPDATE albums SET genre = '#{@genre}' WHERE id = #{@id};")
     end
-    if(attributes.has_key?(:artist_name)) && (attributes.fetch(:artist_name) != nil)
-      artist_name = attributes.fetch(:artist_name)
-      artist = DB.exec("SELECT * FROM artists WHERE lower(name)='#{artist_name.downcase}';").first
-      if artist != nil
-        DB.exec("INSERT INTO albums_artists (album_id, artist_id) VALUES (#{artist['id'].to_i}, #{@id});")
-      else
-        artist = Artist.new(name: artist_name)
-        artist.save() 
-        DB.exec("INSERT INTO albums_artists (album_id, artist_id) VALUES (#{artist['id'].to_i}, #{@id});")
-      end
-    end
   end
-
 
   def delete()
     DB.exec("DELETE FROM albums WHERE id = #{@id};")
     DB.exec("DELETE FROM songs WHERE album_id = #{@id};")
-
   end
 
 #   def self.search(search_term)

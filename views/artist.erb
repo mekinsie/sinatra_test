@@ -17,7 +17,7 @@
 <form action="/artists/<%= @artist.id %>" method="post">
   <div class="form-group">
     <label for="album_name">Album name:</label>
-    <input id="album_name" name="album_name" class="form-control" type="text">
+    <input id="album_name" name="album_name" class="form-control" required type="text">
   </div>
   <button type="submit" class="btn">Add album</button>
 </form><br>
@@ -28,7 +28,7 @@
   <input name="_method" type="hidden" value="patch">
   <div class="form-group">
     <label for="artist_name">Artist name:</label>
-    <input id="artist_name" name="artist_name" class="form-control" type="text">
+    <input id="artist_name" name="artist_name" class="form-control" required type="text">
   </div>
   <button type="submit" class="btn">Edit artist</button>
 </form><br>
